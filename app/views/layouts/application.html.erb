@@ -3,13 +3,12 @@
 <head>
 	<title>Music Map</title>
 
-	<!-- stylesheet_link_tag "blueprint/screen", :media => "screen" -->
-	<!-- stylesheet_link_tag "blueprint/print",  :media => "print" -->
+	<%= stylesheet_link_tag "blueprint/screen", :media => "screen" %>
+	<%= stylesheet_link_tag "blueprint/print",  :media => "print" %>
 	<%= stylesheet_link_tag "application" %>
 
 	<%= javascript_include_tag "http://maps.googleapis.com/maps/api/js?key=AIzaSyCb6i2LgX3lw6SnGDTpoi7ZdjohsKXz8Mg&sensor=true" %>
-	<!-- javascript_include_tag "jquery-1.6.2.min", "rails", "application" -->
-	<%= javascript_include_tag "rails", "application" %>
+	<%= javascript_include_tag "jquery-1.6.2.min", "rails", "application" %>
 
 	<%= csrf_meta_tags %>
 
