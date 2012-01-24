@@ -1,0 +1,55 @@
+<%= link_to 'New Song', new_song_path %>
+
+<div id="mapCanvas"></div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	var myOptions = {
+		center: new google.maps.LatLng(40.6743528, -74.0059731),
+		zoom: 11,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+
+	var map = new google.maps.Map(document.getElementById("mapCanvas"), myOptions);
+
+	var styleArray = [
+		{
+			featureType: "poi",
+			elementType: "geometry",
+			stylers: [
+				{ hue: "#669966" },
+				{ saturation: -53 },
+				{ lightness: -36 }
+			]
+	  	},{
+			featureType: "road",
+			elementType: "geometry",
+			stylers: [
+				{ hue: "#ffff00" },
+				{ saturation: 100 },
+				{ lightness: -22 }
+			]
+	  	},{
+			featureType: "water",
+			elementType: "geometry",
+			stylers: [
+				{ hue: "#336699" },
+		  		{ saturation: 9 },
+				{ lightness: -47 }
+			]
+	  	}
+	];
+
+	map.setOptions({styles: styleArray});
+	var infowindow = new google.maps.InfoWindow();
+	var marker, i;
+
+	<% @songs.each do |m| %>
+		<%= h(m.generate_marker_js) %>
+	<% end %>
+
+});
+
+</script>

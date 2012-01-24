@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @song.name %>
+</p>
+
+<p>
+  <b>Artist:</b>
+  <%= @song.artist %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @song.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @song.longitude %>
+</p>
+
+<p>
+  <b>Duration:</b>
+  <%= @song.duration %>
+</p>
+
+<p>
+  <b>Start time:</b>
+  <%= @song.start_time %>
+</p>
+
+
+<%= link_to 'Edit', edit_song_path(@song) %> |
+<%= link_to 'Back', songs_path %>
