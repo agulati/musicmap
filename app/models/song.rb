@@ -2,6 +2,8 @@ class Song < ActiveRecord::Base
 
 	def generate_marker_js
 
+		if longitude.nil? or latitude.nil? then return end
+
 		"var image_#{id} = new google.maps.MarkerImage(
 			'assets/album.png',
 			new google.maps.Size(14,14),
@@ -24,7 +26,7 @@ class Song < ActiveRecord::Base
 			map: map 
 		}); " +
 		"google.maps.event.addListener(marker_#{id}, 'click', function() {
-			infowindow.setContent('#{name} - " + start_time.strftime("%m/%d/%Y %H:%M%p") + "');
+			infowindow.setContent('#{name} - " + start_time.strftime("%m/%d/%Y %I:%M%p") + "');
 			infowindow.open(map,marker_#{id});
 		}); ".html_safe
 

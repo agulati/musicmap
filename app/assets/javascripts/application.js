@@ -5,3 +5,21 @@
 // the compiled file.
 //
 
+$(function() {
+
+	$("#calc").click(function() {
+	
+		var geocoder = new google.maps.Geocoder();
+		var address = $("#address").val().trim(); 
+	
+		if( address != null && address != "" ) {
+			geocoder.geocode( { 'address': address}, function(results, status) {		
+				if (status == google.maps.GeocoderStatus.OK) {
+					$("#song_latitude").val(results[0].geometry.location.lat());
+					$("#song_longitude").val(results[0].geometry.location.lng());
+				} 
+			});
+		}		
+		return false; 
+	});
+})
