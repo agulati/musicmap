@@ -26,7 +26,7 @@ class Song < ActiveRecord::Base
 			map: map 
 		}); " +
 		"google.maps.event.addListener(marker_#{id}, 'click', function() {
-			infowindow.setContent('#{name} - " + start_time.strftime("%m/%d/%Y %I:%M%p") + "');
+			infowindow.setContent('#{name.gsub(/'/, "\\\\'")} - " + (start_time.nil? ? created_at.strftime("%m/%d/%Y %I:%M%p") : start_time.strftime("%m/%d/%Y %I:%M%p")) + "');
 			infowindow.open(map,marker_#{id});
 		}); ".html_safe
 
