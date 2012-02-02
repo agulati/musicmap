@@ -2,7 +2,7 @@ class SongsController < ApplicationController
   # GET /songs
   # GET /songs.json
   def index
-    @songs = Song.all
+    @songs = Song.all(:order => "id DESC")
     @latest = Song.find(:all, :order => "id DESC", :limit => "5")
 
     respond_to do |format|
