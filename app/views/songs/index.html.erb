@@ -1,5 +1,3 @@
-<%= link_to 'New Song', new_song_path %>
-
 <div id="mapCanvas"></div>
 
 <script type="text/javascript">
@@ -46,10 +44,37 @@ $(document).ready(function() {
 	var infowindow = new google.maps.InfoWindow();
 	var marker, i;
 
-	<% @songs.each do |m| %>
+	<% @latest.each do |m| %>
 		<%= h(m.generate_marker_js) %>
 	<% end %>
 
 });
 
 </script>
+<p/>
+<table>
+	<tr>
+		<th>User</th>
+		<th>Name</th>
+		<th>Artist</th>
+		<th>Latitude</th>
+		<th>Longitude</th>
+		<th>Duration</th>
+		<th>Start Time</th>
+	</tr>
+
+	<% @songs.each do |song| %>
+	<tr>
+		<td></td>
+		<td><%= song.name %></td>
+		<td><%= song.artist %></td>
+		<td><%= song.latitude %></td>
+		<td><%= song.longitude %></td>
+		<td><%= song.duration %></td>
+		<td><%= (song.start_time.nil? ? song.created_at.strftime("%m/%d/%Y %I:%M%p") : song.start_time.strftime("%m/%d/%Y %I:%M%p")) %></td>
+	</tr>
+	<% end %>
+</table>
+<br/><br/>
+<%= link_to 'New Song', new_song_path %>
+<br/><br/>
